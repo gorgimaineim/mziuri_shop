@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+<form class="row g-3">
+  <div class="col-md-6">
+    <label for="product_name" class="form-label">Product name</label>
+    <input type="email" class="form-control" id="product_name" name="product_name">
+  </div>
+  <div class="col-md-3">
+    <label for="min_price" class="form-label">Min</label>
+    <input type="text" class="form-control" id="min_price" name="min_price">
+  </div>
+    <div class="col-md-3">
+    <label for="max_price" class="form-label">Max</label>
+    <input type="text" class="form-control" id="max_price" name="max_price">
+  </div>
+  <div class="col-md-4">
+    <label for="category" class="form-label">Category</label>
+    <select id="category" class="form-select">
+      <option disabled selected>Choose...</option>
+      <option>Electronics</option>
+      <option>Clothes</option>
+      <option>Food</option>
+    </select>
+  </div>
+        <div class="col-8">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+  <div class="col-12">
+
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+</form>
+{% endblock %}
