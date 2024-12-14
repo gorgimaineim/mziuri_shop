@@ -1,5 +1,3 @@
-from itertools import product
-
 from django.shortcuts import render, get_object_or_404
 from .models import Product, Category
 
@@ -27,11 +25,16 @@ def home(request):
     if category:
         filters['category_id'] = category
 
+
     products = Product.objects.filter(**filters)
+
+    sort_by = request.GET.get('sort')
+
+    if sort_by:
+        products = products.order_by(sort_by)
     categories = Category.objects.all()
     return render(request, 'home.html', {'products': products,
                                                               'categories': categories})
-
 
 def product_detail(request, id):
     product = get_object_or_404(Product, pk=id)

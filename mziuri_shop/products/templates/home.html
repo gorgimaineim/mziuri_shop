@@ -28,6 +28,16 @@
         <label for="inputAddress" class="form-label">Address</label>
         <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
     </div>
+     <div class="col-md-6">
+        <label for="sort" class="form-label">Sort by</label>
+        <select id="sort" name="sort" class="form-select">
+            <option disabled selected>Choose...</option>
+                <option value="price">price: lowest first</option>
+                <option value="-price">price: highest first</option>
+                <option value="create_date">Date: newest first</option>
+                <option value="-create_date">Date: oldest first</option>
+        </select>
+    </div>
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Search</button>
     </div>
