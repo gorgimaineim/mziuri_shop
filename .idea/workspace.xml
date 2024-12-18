@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="756ef65e-e416-4fcd-b4fc-66c80edcab19" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/mziuri_shop/media/default.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mziuri_shop/products/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mziuri_shop/products/templates/product_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mziuri_shop/users/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mziuri_shop/users/templates/user_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mziuri_shop/users/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mziuri_shop/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mziuri_shop/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mziuri_shop/mziuri_shop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mziuri_shop/mziuri_shop/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mziuri_shop/products/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mziuri_shop/products/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mziuri_shop/mziuri_shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mziuri_shop/mziuri_shop/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mziuri_shop/products/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mziuri_shop/products/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mziuri_shop/products/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/mziuri_shop/products/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mziuri_shop/products/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mziuri_shop/products/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mziuri_shop/products/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mziuri_shop/products/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,11 +45,12 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/admin/PycharmProjects/mziuri_shop/mziuri_shop/media"
+    "last_opened_file_path": "C:/Users/admin/PycharmProjects/mziuri_shop/mziuri_shop/users"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\PycharmProjects\mziuri_shop\mziuri_shop\users" />
       <recent name="C:\Users\admin\PycharmProjects\mziuri_shop\mziuri_shop\media" />
       <recent name="C:\Users\admin\PycharmProjects\mziuri_shop\mziuri_shop\products" />
     </key>
