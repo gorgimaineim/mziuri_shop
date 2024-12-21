@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime
-
+from django.contrib.auth.models import User
 
 class Category(models.Model):
     name = models.CharField(max_length=150)
@@ -21,3 +21,8 @@ class Product(models.Model):
 
     def __str__(self):
         return  self.name
+
+
+class Cart(models.Model):
+    products = models.ManyToManyField(Product, related_name='carts')
+    user = models.OneToOneField(User, related_name='cart', on_delete=models.CASCADE)

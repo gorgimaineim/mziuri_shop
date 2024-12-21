@@ -16,5 +16,6 @@
             <p class="card-text">{{ product.description }}</p>
         </div>
     </div>
+    <a class="btn btn-primary" href="{% url 'add_product_to_cart' product.id%}"> Add To cart </a>
 </div>
 {% endblock %}

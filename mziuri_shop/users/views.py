@@ -16,6 +16,8 @@ def register_view(request):
     return render(request, 'user_form.html', {'form': form})
 
 def login_view(request):
+    form = UserLoginForm()
+
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -26,8 +28,6 @@ def login_view(request):
             return redirect('home')
         else:
             messages.error(request, 'Invalid username or password.')
-    else:
-        form = UserLoginForm()
     return render(request, 'user_form.html', {'form': form})
 
 def logout_view(request):
