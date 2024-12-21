@@ -10,7 +10,7 @@ def register_view(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Registration successful! Welcome!')
-            return redirect('home')  # Redirect to the homepage or any other page
+            return redirect('home')
 
     form = UserRegisterForm()
     return render(request, 'user_form.html', {'form': form})
@@ -23,7 +23,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'You have successfully logged in!')
-            return redirect('home')  # Redirect to the homepage or any other page
+            return redirect('home')
         else:
             messages.error(request, 'Invalid username or password.')
     else:
@@ -33,4 +33,4 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     messages.success(request, 'You have been logged out.')
-    return redirect('login_view')  # Redirect to the login page or any other page
+    return redirect('login_view')
