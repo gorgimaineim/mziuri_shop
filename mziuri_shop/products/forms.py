@@ -8,5 +8,6 @@ class ProductForm(ModelForm):
         fields = ['name',
                   'description',
                   'price',
-                  'image',
-                  'category']
+                  'category',
+                  'stock_qty',
+                  'image',]

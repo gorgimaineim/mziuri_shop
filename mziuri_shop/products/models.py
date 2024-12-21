@@ -1,6 +1,8 @@
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
+from django.db.models import ManyToManyField, ForeignKey
+
 
 class Category(models.Model):
     name = models.CharField(max_length=150)
@@ -17,12 +19,16 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL,
                                  null=True, related_name='products')
     image = models.ImageField(upload_to='products/', default='default.jpg')
-
+    stock_qty = models.IntegerField(default=0)
 
     def __str__(self):
         return  self.name
 
 
+class CartItem(models.Model):
+    product = ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_items')
+    cart = ForeignKey('Cart', on_delete=models.CASCADE, related_name='cart_items')
+    qty = models.IntegerField(default=1)
+
 class Cart(models.Model):
-    products = models.ManyToManyField(Product, related_name='carts')
     user = models.OneToOneField(User, related_name='cart', on_delete=models.CASCADE)

@@ -1,7 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.template.context_processors import request
-
-from .models import Product, Category, Cart
+from .models import Product, Category, Cart, CartItem
 from .forms import ProductForm
 from django.contrib import messages
 from .utils import  *
@@ -52,6 +50,26 @@ def create_product(request):
                   {'form': form})
 
 
+def update_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    form = ProductForm(instance=product)
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'Your product has been Updated successfully.')
+            return redirect('product_detail', id=id)
+
+    return render(request, 'product_form.html',
+                  {'form': form})
+
+def delete_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    product.delete()
+    messages.add_message(request, messages.SUCCESS, 'Your product has been deleted.')
+    return redirect('home')
+
 
 def cart_view(request):
     cart, created = Cart.objects.get_or_create(user=request.user)
@@ -61,6 +79,7 @@ def cart_view(request):
 def add_product_to_cart(request, id ):
     cart, created = Cart.objects.get_or_create(user=request.user)
     product = Product.objects.get(id=id)
-    cart.products.add(product)
+    cart_item = CartItem.objects.create(product=product, cart=cart, qty=1)
+    cart.cart_items.add(cart_item)
     cart.save()
     return redirect('product_detail', id=id)
