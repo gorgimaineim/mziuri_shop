@@ -4,7 +4,7 @@ from .forms import ProductForm
 from django.contrib import messages
 from .utils import  *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.db.models import Sum
 
 def home(request):
     filters =  get_filters(request)
@@ -71,15 +71,30 @@ def delete_product(request, id):
     return redirect('home')
 
 
+from django.db.models import Sum
+
 def cart_view(request):
     cart, created = Cart.objects.get_or_create(user=request.user)
-    return render(request, 'cart.html',{'cart': cart})
+    items = cart.cart_items.values('product__name').annotate(all_qty=Sum('qty'), item_id=Sum('id'))
+
+    return render(request, 'cart.html', {'items': items})
 
 
 def add_product_to_cart(request, id ):
     cart, created = Cart.objects.get_or_create(user=request.user)
     product = Product.objects.get(id=id)
+
+    if product.stock_qty < 1:
+        messages.error(request, "No product left")
+        return redirect('product_detail', id=id)
+
     cart_item = CartItem.objects.create(product=product, cart=cart, qty=1)
     cart.cart_items.add(cart_item)
     cart.save()
     return redirect('product_detail', id=id)
+
+def delete_cart_item(request, id):
+    cart_item = get_object_or_404(CartItem, id=id)
+    cart_item.delete()
+    messages.success(request, "item has been removed from your cart.")
+    return redirect('cart_view')
