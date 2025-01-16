@@ -79,7 +79,15 @@ def cart_view(request):
 def add_product_to_cart(request, id ):
     cart, created = Cart.objects.get_or_create(user=request.user)
     product = Product.objects.get(id=id)
-    cart_item = CartItem.objects.create(product=product, cart=cart, qty=1)
-    cart.cart_items.add(cart_item)
-    cart.save()
+    cart_item, created = CartItem.objects.get_or_create(product=product, cart=cart)
+    if not created:
+        cart_item.qty += 1
+        cart_item.save()
     return redirect('product_detail', id=id)
+
+
+def remove_cart_item(request, id ):
+    cart_item = get_object_or_404(CartItem, pk=id)
+    cart_item.delete()
+    messages.add_message(request, messages.SUCCESS, 'cart item has been removed.')
+    return redirect('cart_view')
